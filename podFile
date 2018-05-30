@@ -1,0 +1,16 @@
+
+
+platform :ios, '9.0'
+
+target "HCSortingTool" do
+pod 'MJRefresh'
+pod 'AFNetworking'
+pod 'SVProgressHUD'
+pod 'Masonry', '~> 1.0.2'
+pod 'IQKeyboardManager','~> 4.0.9'
+pod 'SDWebImage'
+pod 'BabyBluetooth'
+pod 'UICountingLabel'
+pod 'BmobSDK'
+
+end
