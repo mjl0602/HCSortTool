@@ -38,19 +38,15 @@
 }
 
 
-
-
 -(void)tryConnectPrinter{
     baby = [BabyBluetooth shareBabyBluetooth];
     __weak typeof(self) weakSelf = self;
     
     __block BOOL hasConnectPrinter = false;
     
-    
     [[GprinterBluetooth sharedInstance]isDisconnect:^(CBPeripheral *perpheral, NSError *error) {
         NSLog(@"打印机断开");
     }];
-    
     
     //显示扫描
     [SVProgressHUD showWithStatus:@"请打开蓝牙设备，扫描中..."];
@@ -78,8 +74,7 @@
                     
                     hasConnectPrinter = true;
                     
-                    
-                    if (_noBalance) {
+                    if (self.noBalance) {
                         [SVProgressHUD showSuccessWithStatus:@"连接打印机成功"];
                         _noBalance = false;
                         [self->baby cancelScan];
@@ -92,8 +87,9 @@
         }
         
         if ( (balanceUUID.length<8) | [balanceUUID isEqualToString:peripheral.identifier.UUIDString] ) {
-            if ([peripheral.name hasPrefix:balanceName] && hasConnectPrinter) {
-                NSLog(@"开始连接电子秤");
+            NSString *deviceName = [advertisementData objectForKey:@"kCBAdvDataLocalName"];
+            if ([deviceName containsString:balanceName] && hasConnectPrinter) {
+                NSLog(@"开始连接电子秤:%@",peripheral.name);
                 _balance = peripheral;
                 _myPeripheral = peripheral;
                 [[NSUserDefaults standardUserDefaults]setValue:peripheral.identifier.UUIDString forKey:@"balance_uuid"];
@@ -125,9 +121,6 @@
     [self disconnectAllAndStopScan];
     [self tryConnectPrinter];
 }
-
-
-
 
 -(void)continueToConnect{
     NSLog(@"continueToConnect");
@@ -269,7 +262,7 @@
     
 
     //框号
-    [labelCommand printerfontFormX: sIndex>9 ? @"284":@"314" Y:@"146" fontName:SIMPLIFIED_CHINESE rotation:ROTATION_0 magnificationRateX:MUL_2 magnificationRateY:MUL_2 content:[NSString stringWithFormat:@"%ld",sIndex]];
+    [labelCommand printerfontFormX: sIndex>9 ? @"284":@"314" Y:@"146" fontName:SIMPLIFIED_CHINESE rotation:ROTATION_0 magnificationRateX:MUL_2 magnificationRateY:MUL_2 content:[NSString stringWithFormat:@"%ld",(long)sIndex]];
     //重量
     [labelCommand printerfontFormX:@"44" Y:@"424" fontName:SIMPLIFIED_CHINESE rotation:ROTATION_0 magnificationRateX:MUL_2 magnificationRateY:MUL_2 content:[weight stringByAppendingString:unit]];
     //条码

@@ -114,7 +114,7 @@
         _printProgressLabel.textColor = [UIColor ovLightGrayColor];
         _printProgressLabel.font = [UIFont systemFontOfSize:16];
         _printProgressLabel.textAlignment = NSTextAlignmentCenter;
-        _printProgressLabel.text = @"等待稳定";
+        _printProgressLabel.text = @"等待自动打印";
         [self addSubview:_printProgressLabel];
         [_printProgressLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.equalTo(_balanceNumber);
@@ -127,7 +127,6 @@
         [_printProgress mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.top.offset(2);
             make.bottom.offset(-2);
-            //make.width.offset(300);
         }];
         
     }
@@ -185,6 +184,9 @@
         make.top.equalTo(_balanceHolder.mas_centerY);
     }];
     
+    _balanceProgressView.frame = [self frameWithProgress:0 fatherViewSize:_balanceProgressBackground.frame.size];
+    
+    
     [self bringSubviewToFront:_balanceNumber];
 }
 
@@ -234,6 +236,8 @@
     CGFloat progress = 0;
     if (_targetNumber) {
         progress = realNumber/_targetNumber;
+    }else{
+        progress = realNumber/60.0;
     }
     //NSLog(@"%f,%f",realNumber,progress);
     //目标大小
@@ -251,11 +255,21 @@
         targetColor = [UIColor ovGreenColor];
         fontColor = [UIColor whiteColor];
     }
-
+    
+    
+    CGRect rect = _balanceProgressView.frame;
+    if (rect.size.width == 0) {
+        _balanceProgressView.frame = targetFrame;
+        return;
+    }
+    
     [UIView animateWithDuration:0.5 animations:^{
         _balanceProgressView.frame = targetFrame;
-        _balanceProgressView.backgroundColor = targetColor;
-        _balanceNumber.textColor = fontColor;
+        if (_targetNumber) {
+            _balanceProgressView.backgroundColor = targetColor;
+            _balanceNumber.textColor = fontColor;
+        }
+        
     }];
 }
 

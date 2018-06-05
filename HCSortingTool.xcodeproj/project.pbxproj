@@ -11,7 +11,7 @@
 		57149C05207A05750008F011 /* BleOprateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 57149C04207A05750008F011 /* BleOprateView.m */; };
 		576A09B020AD74C20058B35C /* StandardPrintCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 576A09AF20AD74C20058B35C /* StandardPrintCollectionViewCell.m */; };
 		576A09B920B7E5050058B35C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 576A09B820B7E5050058B35C /* AVFoundation.framework */; };
-		576A09C520BBE6980058B35C /* code.png in Resources */ = {isa = PBXBuildFile; fileRef = 576A09C420BBE6980058B35C /* code.png */; };
+		576A09C720BFEABF0058B35C /* code.png in Resources */ = {isa = PBXBuildFile; fileRef = 576A09C620BFEABF0058B35C /* code.png */; };
 		576A5BFB20918656001743E3 /* loginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 576A5BFA20918656001743E3 /* loginViewController.m */; };
 		576A5BFF2091C797001743E3 /* standardPrinterCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 576A5BFE2091C797001743E3 /* standardPrinterCollectionViewController.m */; };
 		5791E75B20A98FF300A318E0 /* HalfSortMachine.png in Resources */ = {isa = PBXBuildFile; fileRef = 5791E75A20A98FF200A318E0 /* HalfSortMachine.png */; };
@@ -90,7 +90,7 @@
 		576A09AE20AD74C20058B35C /* StandardPrintCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StandardPrintCollectionViewCell.h; sourceTree = "<group>"; };
 		576A09AF20AD74C20058B35C /* StandardPrintCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StandardPrintCollectionViewCell.m; sourceTree = "<group>"; };
 		576A09B820B7E5050058B35C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		576A09C420BBE6980058B35C /* code.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = code.png; path = ../../../../../../../../Desktop/code.png; sourceTree = "<group>"; };
+		576A09C620BFEABF0058B35C /* code.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = code.png; sourceTree = "<group>"; };
 		576A5BF920918656001743E3 /* loginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = loginViewController.h; sourceTree = "<group>"; };
 		576A5BFA20918656001743E3 /* loginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = loginViewController.m; sourceTree = "<group>"; };
 		576A5BFD2091C797001743E3 /* standardPrinterCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = standardPrinterCollectionViewController.h; sourceTree = "<group>"; };
@@ -473,7 +473,7 @@
 		57BC5EF22073351700B8E494 /* 配图 */ = {
 			isa = PBXGroup;
 			children = (
-				576A09C420BBE6980058B35C /* code.png */,
+				576A09C620BFEABF0058B35C /* code.png */,
 				5791E75A20A98FF200A318E0 /* HalfSortMachine.png */,
 				57BC5EFE20733C5900B8E494 /* 很吊的机械@2x.png */,
 				57BC5EFC20733C5900B8E494 /* 很吊的机械@3x.png */,
@@ -623,7 +623,6 @@
 				57BC5F0220733C5900B8E494 /* 很吊的机械@2x.png in Resources */,
 				579B42CC206E1CE200DC763F /* target@2x.png in Resources */,
 				57BC5EF92073351700B8E494 /* 蔬菜组合@2x.png in Resources */,
-				576A09C520BBE6980058B35C /* code.png in Resources */,
 				579B42C1206DE37000DC763F /* balanceHolder.png in Resources */,
 				579B42C0206DE37000DC763F /* balanceFoot@3x.png in Resources */,
 				57BC5F0120733C5900B8E494 /* logo@2x.png in Resources */,
@@ -634,6 +633,7 @@
 				5791E75B20A98FF300A318E0 /* HalfSortMachine.png in Resources */,
 				579B42B3206B397C00DC763F /* podFile in Resources */,
 				579B42C2206DE37000DC763F /* balanceHolder@3x.png in Resources */,
+				576A09C720BFEABF0058B35C /* code.png in Resources */,
 				579B427E206B385E00DC763F /* Main.storyboard in Resources */,
 				57BC5EFF20733C5900B8E494 /* logo@3x.png in Resources */,
 				57BC5EF82073351700B8E494 /* 蓝牙电子@2x.png in Resources */,

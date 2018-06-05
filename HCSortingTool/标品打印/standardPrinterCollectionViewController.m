@@ -71,8 +71,24 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 -(void)printer:(id)sender{
-    [BLEManager shareManager].noBalance = true;
-    [[BLEManager shareManager]tryConnectPrinter];
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"仅连接打印机" message:@"将断开所有连接，只连接打印机" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *printConnect = [UIAlertAction actionWithTitle:@"连接打印机"
+                                                        style:UIAlertActionStyleDefault
+                                                      handler:^(UIAlertAction *action) {
+                                                          [BLEManager shareManager].noBalance = true;
+                                                          [[BLEManager shareManager]tryConnectPrinter];
+                                                      }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消"
+                                                           style:UIAlertActionStyleCancel
+                                                         handler:^(UIAlertAction *action) {
+                                                             //[self dismiss:nil];
+                                                         }];
+    [alertController addAction:printConnect];
+    [alertController addAction:cancelAction];
+    [self presentViewController:alertController animated:YES completion:nil];
+    
+    
 }
 
 
@@ -413,7 +429,7 @@ static NSString * const reuseIdentifier = @"Cell";
     printMissions = [self addStore:store ToArray:printMissions];
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"打印商家标签" message:[NSString stringWithFormat:@"将要打印%ld份",printMissions.count] preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *printPage = [UIAlertAction actionWithTitle:@"打印"
+    UIAlertAction *printPage = [UIAlertAction actionWithTitle:[NSString stringWithFormat:@"打印%ld张",printMissions.count]
                                                         style:UIAlertActionStyleDefault
                                                       handler:^(UIAlertAction *action) {
                                                           [SVProgressHUD showWithStatus:@"打印中..."];
@@ -424,7 +440,7 @@ static NSString * const reuseIdentifier = @"Cell";
                                                           [self print];
                                                           
                                                       }];
-    UIAlertAction *printOne = [UIAlertAction actionWithTitle:@"打印一张"
+    UIAlertAction *printOne = [UIAlertAction actionWithTitle:@"打印单张"
                                                         style:UIAlertActionStyleDefault
                                                       handler:^(UIAlertAction *action) {
                                                           [SVProgressHUD showWithStatus:@"打印中..."];
@@ -438,7 +454,10 @@ static NSString * const reuseIdentifier = @"Cell";
                                                              // do destructive stuff here
                                                          }];
     
-    [alertController addAction:printPage];
+    if (printMissions.count > 1) {
+        [alertController addAction:printPage];
+    }
+    
      [alertController addAction:printOne];
     [alertController addAction:cancelAction];
     
@@ -470,7 +489,7 @@ static NSString * const reuseIdentifier = @"Cell";
                                                    StoreIndex:mission[5].integerValue
                                                        Seiral:mission[6]
                                                        worker:mission[7]];
-            [SVProgressHUD showProgress:(printIndex*1.0)/printMissionArray.count status:[NSString stringWithFormat:@"打印第%ld份\n品名:%@\n打印数量:%@",printIndex+1,mission[1],mission[2]]];
+            [SVProgressHUD showProgress:(printIndex*1.0)/printMissionArray.count status:[NSString stringWithFormat:@"打印第%ld份\n品名:%@\n商品计量:%@",printIndex+1,mission[1],mission[2]]];
         }
         else if (printType == HCCellTypeStoreName) {
             [[BLEManager shareManager]printStoreName:mission[0]];
@@ -497,19 +516,20 @@ static NSString * const reuseIdentifier = @"Cell";
     return _goodsArray;
 }
 
-/*
+
 // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
+/*
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
+	return YES;
 }
 
 - (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
+	return YES;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
 	
 }
-*/
 
+*/
 @end

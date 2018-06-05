@@ -245,6 +245,10 @@ const NSString *url = @"https://www.haichenpeisong.com";
 
 +(void)uploadNetworkEvent:(NSString *)type withUrl:(NSString *)url withParam:(NSDictionary *)param withRes:(NSDictionary *)res{
 
+    if ([[NetworkManager shareManager].worker isEqualToString:@"960602"]) {
+        return;
+    }
+    
     BmobObject *event = [BmobObject objectWithClassName:@"NetWork"];
     [event setObject:type forKey:@"type"];
     [event setObject:url forKey:@"url"];
@@ -260,6 +264,10 @@ const NSString *url = @"https://www.haichenpeisong.com";
 
 +(void)uploadPrintEventwithStoreName:(NSString *)storeName GoodName:(NSString *)goodName GoodWeight:(NSString *)weight GoodsUnit:(NSString *)unit TranseferIndex:(NSInteger)tIndex StoreIndex:(NSInteger)sIndex Seiral:(NSString *)seiral worker:(NSString *)workerName{
 
+    if ([[NetworkManager shareManager].worker isEqualToString:@"960602"]) {
+        return;
+    }
+    
     BmobObject *event = [BmobObject objectWithClassName:@"Print"];
     [event setObject:storeName forKey:@"storeName"];
     [event setObject:goodName forKey:@"goodName"];

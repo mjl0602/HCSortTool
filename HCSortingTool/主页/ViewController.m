@@ -61,8 +61,6 @@
         name = @"点击此处登陆";
     }
     
-    
-
     NSString *helloWord = [NSString stringWithFormat:@"你好！%@",name];
     [_welcomeWord setTitle:helloWord forState:UIControlStateNormal];
 
@@ -141,10 +139,10 @@
     }];
     
     _deviceCenter = [sortEntryView new];
-    _deviceCenter.mainText.text = @"设备管理";
+    _deviceCenter.mainText.text = @"标品打印";
     [_deviceCenter.imageView setImage:[UIImage imageNamed:@"很吊的机械.png"]];
     [self.view addSubview:_deviceCenter];
-    [_deviceCenter addTarget:self action:@selector(toDeviceCenter:) forControlEvents:UIControlEventTouchUpInside];
+    [_deviceCenter addTarget:self action:@selector(toStandPrinterCenter:) forControlEvents:UIControlEventTouchUpInside];
     [_deviceCenter mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_sortCenterView);
         make.left.equalTo(_sortCenterView.mas_right).offset(24);
@@ -153,9 +151,9 @@
     }];
     
     _uselessView = [sortEntryView new];
-    _uselessView.mainText.text = @"标品打印";
+    _uselessView.mainText.text = @"设备管理";
     //_uselessView.backgroundColor = [UIColor whiteColor];
-    [_uselessView addTarget:self action:@selector(toStandPrinterCenter:) forControlEvents:UIControlEventTouchUpInside];
+    [_uselessView addTarget:self action:@selector(toDeviceCenter:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_uselessView];
     [_uselessView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_sortCenterView.mas_bottom).offset(24);

@@ -23,7 +23,6 @@
 @property(nonatomic)NSString *sortPath;
 @property(nonatomic)NSString *sessionId;
 
-
 +(instancetype)shareManager;
 
 ///登陆
@@ -42,11 +41,9 @@
 ///跳过任务大类
 +(void)passAllMissionWithFlowNumber:(NSInteger)flowNumber complete:(void (^)(NSDictionary *))success;
 
-
 ///基础请求封装
 +(void)hcHttpGetUseBlockWithUrl:(NSString *)url paramDictionary:(NSDictionary *)param success:(void (^)(NSDictionary *res))success;
 +(void)hcHttpPostUseBlockWithUrl:(NSString *)url paramDictionary:(NSDictionary *)param success:(void (^)(NSDictionary *res))success;
-
 
 //记录打印
 +(void)uploadPrintEventwithStoreName:(NSString *)storeName GoodName:(NSString *)goodName GoodWeight:(NSString *)weight GoodsUnit:(NSString *)unit TranseferIndex:(NSInteger)tIndex StoreIndex:(NSInteger)sIndex Seiral:(NSString *)seiral worker:(NSString *)workerName;
